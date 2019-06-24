@@ -6,6 +6,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,9 +17,126 @@
                     <view key="view" contentMode="scaleToFill" id="qjQ-R1-Oda">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Fn3-Nj-4F7">
+                                <rect key="frame" x="36" y="80" width="309" height="300"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="feC-ak-Ppq">
+                                        <rect key="frame" x="0.0" y="0.0" width="309" height="52.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bill" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hO5-gN-j2a">
+                                                <rect key="frame" x="0.0" y="0.0" width="101" height="52.5"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                                </accessibility>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Ud-Qo-bHh" userLabel="Bill">
+                                                <rect key="frame" x="109" y="0.0" width="200" height="52.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="200" id="vnQ-3g-0eN"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                                <connections>
+                                                    <action selector="textFieldDidChange:" destination="Tvz-EP-kGc" eventType="editingChanged" id="0bY-Sv-PPU"/>
+                                                    <outlet property="delegate" destination="Tvz-EP-kGc" id="Msp-AQ-lNd"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Olk-cC-bFp">
+                                        <rect key="frame" x="0.0" y="82.5" width="309" height="52.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tip %" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3wC-7N-jyL">
+                                                <rect key="frame" x="0.0" y="0.0" width="101" height="52.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="18" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s4w-0U-U6L" userLabel="TipPercent">
+                                                <rect key="frame" x="109" y="0.0" width="200" height="52.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="200" id="2oO-zZ-PTx"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                <connections>
+                                                    <action selector="textFieldDidChange:" destination="Tvz-EP-kGc" eventType="editingChanged" id="gUn-uD-6mr"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="e5H-Pd-ggO">
+                                        <rect key="frame" x="0.0" y="165" width="309" height="52.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tip" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3C-g3-iX3">
+                                                <rect key="frame" x="0.0" y="0.0" width="101" height="52.5"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                                </accessibility>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZWD-5A-Ksh" userLabel="Tip">
+                                                <rect key="frame" x="109" y="0.0" width="200" height="52.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="200" id="tjC-gu-vy3"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Grc-hS-vIN">
+                                        <rect key="frame" x="0.0" y="247.5" width="309" height="52.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Esi-K1-sf4">
+                                                <rect key="frame" x="0.0" y="0.0" width="101" height="52.5"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                                </accessibility>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CRq-qB-xY2" userLabel="Total">
+                                                <rect key="frame" x="109" y="0.0" width="200" height="52.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="200" id="1eh-mp-mhp"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="wFL-K9-9z7"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Fn3-Nj-4F7" firstAttribute="top" secondItem="b6P-oe-xOP" secondAttribute="top" constant="60" id="7gA-NB-fvU"/>
+                            <constraint firstItem="Fn3-Nj-4F7" firstAttribute="leading" secondItem="b6P-oe-xOP" secondAttribute="leading" constant="36" id="8gk-Bo-B1f"/>
+                            <constraint firstItem="b6P-oe-xOP" firstAttribute="trailing" secondItem="Fn3-Nj-4F7" secondAttribute="trailing" constant="30" id="ifZ-CF-Q2j"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="b6P-oe-xOP"/>
                     </view>
+                    <connections>
+                        <outlet property="billTextField" destination="0Ud-Qo-bHh" id="ASK-WU-a8I"/>
+                        <outlet property="tipPercentTextField" destination="s4w-0U-U6L" id="ui7-cM-XbS"/>
+                        <outlet property="tipTextField" destination="ZWD-5A-Ksh" id="9ro-vk-gze"/>
+                        <outlet property="totalTextField" destination="CRq-qB-xY2" id="x9X-8a-och"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V4Q-UM-6tm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
