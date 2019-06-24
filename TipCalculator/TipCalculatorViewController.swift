@@ -29,8 +29,75 @@
 import UIKit
 
 class TipCalculatorViewController: UIViewController {
+  let defaultBill = 0.0
+  let defaultTipPercent = 0.18
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+  var bill: Double
+  var tipPercent: Double
+
+  @IBOutlet var billTextField: UITextField!
+  @IBOutlet var tipPercentTextField: UITextField!
+  @IBOutlet var tipTextField: UITextField!
+  @IBOutlet var totalTextField: UITextField!
+
+  required init?(coder aDecoder: NSCoder) {
+    self.bill = defaultBill
+    self.tipPercent = defaultTipPercent
+    super.init(coder: aDecoder)
+  }
+
+  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    self.bill = defaultBill
+    self.tipPercent = defaultTipPercent
+    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+  }
+}
+
+extension TipCalculatorViewController: UITextFieldDelegate {
+  func textField(_ textField: UITextField,
+                 shouldChangeCharactersIn range: NSRange,
+                 replacementString string: String) -> Bool {
+    // Only allow one decimal separator in bill input
+    let decimalSeparator = Locale.current.decimalSeparator ?? "."
+    let text = textField.text ?? ""
+    if text.contains(decimalSeparator), string == decimalSeparator {
+      return false
     }
+    return true
+  }
+
+  @IBAction func textFieldDidChange(_ sender: UITextField) {
+    let input = sender.text ?? ""
+    switch sender {
+    case billTextField:
+      bill = billFrom(input)
+    case tipPercentTextField:
+      tipPercent = tipPercentFrom(input)
+    default:
+      break
+    }
+    let tipTotal = calculateTip(bill: bill, tipPercent: tipPercent)
+    tipTextField.text = String(tipTotal)
+    let billTotal = calculateBillTotal(bill: bill, tip: tipTotal)
+    totalTextField.text = String(billTotal)
+  }
+
+  private func billFrom(_ input: String) -> Double {
+    return Double(input) ?? defaultBill
+  }
+
+  private func tipPercentFrom(_ input: String)-> Double {
+    guard let value = Double(input) else {
+      return defaultTipPercent
+    }
+    return value / 100.0
+  }
+
+  private func calculateTip(bill: Double, tipPercent: Double) -> Double {
+    return (bill * tipPercent).roundedToTwoDecimals()
+  }
+
+  private func calculateBillTotal(bill: Double, tip: Double) -> Double {
+    return (bill + tip).roundedToTwoDecimals()
+  }
 }
